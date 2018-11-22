@@ -3,7 +3,6 @@
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const fs = require('fs');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -160,9 +159,6 @@ module.exports = {
     // },
   // },
   plugins: [
-    new CleanWebpackPlugin([ `dist` ], {
-      root: path.join(__dirname, '../'),
-    }),
     new ManifestPlugin({
       writeToFileEmit: true,
       fileName: 'assets-manifest.json',
