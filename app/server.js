@@ -17,10 +17,10 @@ server.get('*', (req, res, next) => {
       if (err.code === 404) {
         next();
       } else {
-        res.status(500).end('服务器内部错误');
+        res.status(500).send('服务器内部错误');
       }
     } else {
-      res.end(html);
+      res.send(html);
     }
   });
 });
