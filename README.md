@@ -1066,4 +1066,32 @@ const renderer = createBundleRenderer(serverBundle, {
 </html>
 ```
 
-> 这里我们省略了`webpack.base.config.js`的内容，这个文件
+> 这里我们省略了`webpack.base.config.js`的内容，看这篇文章的你应该都会配置的吧，就不在此赘述。
+
+接着我们在`package.json`中添加几个脚本：
+
+```json
+{
+    "scripts": {
+        "build-server": "webpack --config build/webpack.server.config.js --progress",
+        "build-client": "webpack --config build/webpack.client.config.js --progress",
+        "build": "npm run build-client & npm run build-server",        
+    }
+}
+```
+
+编译代码：
+
+```bash
+$ npm run build
+$ node|supervisor ./app/server.js
+```
+
+这时候访问localhost:8080,可以看到如下页面：
+![image-20181123183000362](preview.png)
+
+`Command + I + U`查看服务端返回的html文件，可以看到和SPA的区别，首页的DOM结构都渲染好了：
+
+![image-20181123183150537](preview2.png)
+
+到此为止，我们应该已经有了一个可以运行的项目骨架了（当然我们省略了一些代码细节），虽然它可能比较简陋，但对于理解SSR的主体流程已经够了，实际代码可以参照项目文件。
